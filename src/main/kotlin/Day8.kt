@@ -1,4 +1,9 @@
-import AocUtils.takeWhileInclusive
+fun <T> Iterable<T>.takeWhileInclusive(pred: (T) -> Boolean): List<T> {
+    var shouldContinue = true
+    return takeWhile {
+        val result = shouldContinue; shouldContinue = pred(it); result
+    }
+}
 
 fun day8(input: String): Pair<Int, Int> {
     val trees = input.filter { it != '\n' }
