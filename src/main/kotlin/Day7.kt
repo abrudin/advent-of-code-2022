@@ -7,11 +7,6 @@ data class Dir(
     fun findRoot(): Dir = parent?.findRoot() ?: this
     fun size(): Int = files.sum() + children.sumOf { it.size() }
     fun dirs(): List<Dir> = children.flatMap { it.dirs() } + this
-
-
-    fun addFile(file: Int): Dir {
-        files.add(file); return this
-    }
 }
 
 sealed interface Cmd {
@@ -38,12 +33,12 @@ fun day7(input: String): Pair<Int, Int> {
             }
 
             is Cmd.LsFile -> {
-                current.files.add(cmd.size);current
+                current.files.add(cmd.size); current
             }
         }
     }.findRoot()
     return Pair(
         root.dirs().filter { it.size() <= 100000 }.sumOf { it.size() },
-        root.dirs().sortedBy { it.size() }.first { root.size() - it.size() < 70000000 - 30000000 }.size()
+        root.dirs().sortedBy { it.size() }.first { 30000000 + root.size() - it.size() <= 70000000 }.size()
     )
 }

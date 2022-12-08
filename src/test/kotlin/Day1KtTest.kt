@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Test
 internal class Day1KtTest {
     @Test
     fun test() {
-        val example = day1(AocUtils.loadResourceAsString("day1-example.txt"))
-        assertThat(example.first).isEqualTo(24000)
-        assertThat(example.second).isEqualTo(45000)
-        val real = day1(AocUtils.loadResourceAsString("day1.txt"))
-        assertThat(real.first).isEqualTo(69528)
-        assertThat(real.second).isEqualTo(206152)
+        val (exampleA, exampleB) = day1(AocUtils.loadResourceAsString("day1-example.txt"))
+        assertThat(exampleA).isEqualTo(24000)
+        assertThat(exampleB).isEqualTo(45000)
+        val (realA, realB) = day1(AocUtils.loadResourceAsString("day1.txt"))
+        assertThat(realA).isEqualTo(69528)
+        assertThat(realB).isEqualTo(206152)
     }
 }
