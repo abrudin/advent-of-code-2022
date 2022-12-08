@@ -1,16 +1,10 @@
 fun day4(input: String): Pair<Int, Int> {
     val parsed = input.split("\n").map {
-        listOf(Pair(0, 0), Pair(0, 1), Pair(1, 0), Pair(1, 1)).map { p ->
-            it.split(",")[p.first].split("-")[p.second].toInt()
-        }
+        val (start1, end1, start2, end2) = "(\\d+)-(\\d+),(\\d+)-(\\d+)".toRegex().matchEntire(it)!!.destructured
+        Pair(start1.toInt().rangeTo(end1.toInt()), start2.toInt().rangeTo(end2.toInt()))
     }
     return Pair(
-        parsed.count { (it[0]..it[1]).union((it[2]..it[3])) in setOf((it[0]..it[1]).toSet(), (it[2]..it[3]).toSet()) },
-        parsed.count { (it[0]..it[1]).intersect(it[2]..it[3]).isNotEmpty() }
+        parsed.count { it.first.union(it.second) in setOf(it.first.toSet(), it.second.toSet()) },
+        parsed.count { it.first.intersect(it.second).isNotEmpty() }
     )
 }
-
-// Alternatively
-// it[0] <= it[2] && it[1] >= it[3] || it[2] <= it[0] && it[3] >= it[1]
-// it[0] <= it[2] && it[1] >= it[2] || it[2] <= it[0] && it[3] >= it[0]
-
