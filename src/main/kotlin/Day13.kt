@@ -1,28 +1,3 @@
-fun <T> List<T>.zipFill(other: List<T>, fill: T): List<Pair<T, T>> =
-    (this + if (other.size > this.size) List(other.size - this.size) { fill } else listOf())
-        .zip(other + if (this.size > other.size) List(this.size - other.size) { fill } else listOf())
-
-sealed interface Packet : Comparable<Packet> {
-    override operator fun compareTo(other: Packet): Int =
-        when (this) {
-            is Leaf -> when (other) {
-                is Leaf -> this.i.compareTo(other.i)
-                is Node -> if (this.i < 0) -1 else Node(listOf(this)).compareTo(other)
-            }
-
-            is Node -> when (other) {
-                is Leaf -> if (other.i < 0) 1 else this.compareTo(Node(listOf(other)))
-                is Node -> this.children.zipFill(other.children, Leaf(-1))
-                    .map { it.first.compareTo(it.second) }.find { it != 0 } ?: 0
-            }
-        }
-
-
-    data class Node(val children: List<Packet>) : Packet
-
-    data class Leaf(val i: Int) : Packet
-}
-
 sealed interface Parser {
     data class Node(
         val parent: Node? = null,
@@ -62,6 +37,31 @@ sealed interface Parser {
                 }
             }.asPacket()
     }
+}
+
+sealed interface Packet : Comparable<Packet> {
+    fun <T> List<T>.zipFill(other: List<T>, fill: T): List<Pair<T, T>> =
+        (this + if (other.size > this.size) List(other.size - this.size) { fill } else listOf())
+            .zip(other + if (this.size > other.size) List(this.size - other.size) { fill } else listOf())
+
+    override operator fun compareTo(other: Packet): Int =
+        when (this) {
+            is Leaf -> when (other) {
+                is Leaf -> this.i.compareTo(other.i)
+                is Node -> if (this.i < 0) -1 else Node(listOf(this)).compareTo(other)
+            }
+
+            is Node -> when (other) {
+                is Leaf -> if (other.i < 0) 1 else this.compareTo(Node(listOf(other)))
+                is Node -> this.children.zipFill(other.children, Leaf(-1))
+                    .map { it.first.compareTo(it.second) }.find { it != 0 } ?: 0
+            }
+        }
+
+
+    data class Node(val children: List<Packet>) : Packet
+
+    data class Leaf(val i: Int) : Packet
 }
 
 fun day13(input: String): Pair<Int, Int> {
