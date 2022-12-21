@@ -1,0 +1,224 @@
+digraph G {
+    concentrate = true
+    rankdir = "LR"
+    MU [label = "MU:0"]
+    TQ [label = "TQ:0"]
+    YH [label = "YH:0"]
+    EO [label = "EO:0"]
+    MH [label = "MH:0"]
+    RJ [label = "RJ:0"]
+    XZ [label = "XZ:0"]
+    UU [label = "UU:0"]
+    KV [label = "KV:13"]
+    SU [label = "SU:19"]
+    BB [label = "BB:0"]
+    RI [label = "RI:4"]
+    TZ [label = "TZ:0"]
+    LY [label = "LY:0"]
+    PX [label = "PX:0"]
+    VH [label = "VH:0"]
+    HN [label = "HN:0"]
+    LR [label = "LR:0"]
+    NJ [label = "NJ:0"]
+    AM [label = "AM:0"]
+    FM [label = "FM:0"]
+    VT [label = "VT:5"]
+    HF [label = "HF:0"]
+    HR [label = "HR:11"]
+    WX [label = "WX:0"]
+    PE [label = "PE:0"]
+    QF [label = "QF:17"]
+    EE [label = "EE:0"]
+    UH [label = "UH:25"]
+    CV [label = "CV:0"]
+    SF [label = "SF:0"]
+    RP [label = "RP:3"]
+    XD [label = "XD:0"]
+    GG [label = "GG:12"]
+    XG [label = "XG:0"]
+    YA [label = "YA:21"]
+    OL [label = "OL:0"]
+    AN [label = "AN:0"]
+    LI [label = "LI:15"]
+    GQ [label = "GQ:0"]
+    HU [label = "HU:0"]
+    OJ [label = "OJ:0"]
+    YN [label = "YN:0"]
+    ML [label = "ML:0"]
+    UJ [label = "UJ:0"]
+    IX [label = "IX:0"]
+    JC [label = "JC:0"]
+    TA [label = "TA:0"]
+    DT [label = "DT:16"]
+    NR [label = "NR:0"]
+    YI [label = "YI:0"]
+    AA [label = "AA:0"]
+    BN [label = "BN:0"]
+    KA [label = "KA:0"]
+    IL [label = "IL:0"]
+    CN [label = "CN:7"]
+    IP [label = "IP:0"]
+    OM [label = "OM:0"]
+    KO [label = "KO:0"]
+    LA [label = "LA:0"]
+    JQ [label = "JQ:6"]
+    IK [label = "IK:0"]
+    HG [label = "HG:0"]
+    NS [label = "NS:23"]
+    MU -> VT
+    MU -> LA
+    TQ -> HU
+    TQ -> SU
+    YH -> CN
+    YH -> BN
+    EO -> IK
+    EO -> CN
+    MH -> GG
+    MH -> HG
+    RJ -> AA
+    RJ -> RI
+    XZ -> PX
+    XZ -> VT
+    UU -> DT
+    UU -> XG
+    KV -> HN
+    KV -> CV
+    KV -> PE
+    KV -> XD
+    KV -> TA
+    SU -> TQ
+    SU -> HF
+    SU -> OL
+    SU -> SF
+    BB -> NS
+    BB -> HR
+    RI -> ML
+    RI -> EE
+    RI -> TZ
+    RI -> RJ
+    RI -> PE
+    TZ -> VT
+    TZ -> RI
+    LY -> EE
+    LY -> RP
+    PX -> XZ
+    PX -> JQ
+    VH -> DT
+    VH -> TA
+    HN -> KV
+    HN -> LR
+    LR -> HR
+    LR -> HN
+    NJ -> QF
+    NJ -> JC
+    AM -> OJ
+    AM -> AA
+    FM -> VT
+    FM -> RP
+    VT -> IP
+    VT -> XZ
+    VT -> TZ
+    VT -> FM
+    VT -> MU
+    HF -> NR
+    HF -> SU
+    HR -> BB
+    HR -> KO
+    HR -> LR
+    WX -> CN
+    WX -> IP
+    PE -> KV
+    PE -> RI
+    QF -> YI
+    QF -> NJ
+    EE -> LY
+    EE -> RI
+    UH -> YI
+    CV -> KV
+    CV -> NS
+    SF -> YN
+    SF -> SU
+    RP -> HG
+    RP -> FM
+    RP -> OJ
+    RP -> IK
+    RP -> LY
+    XD -> IL
+    XD -> KV
+    GG -> ML
+    GG -> IL
+    GG -> MH
+    GG -> OL
+    GG -> KA
+    XG -> LI
+    XG -> UU
+    YA -> UJ
+    YA -> GQ
+    OL -> GG
+    OL -> SU
+    AN -> AA
+    AN -> IX
+    LI -> XG
+    GQ -> YA
+    GQ -> KO
+    HU -> TQ
+    HU -> DT
+    OJ -> RP
+    OJ -> AM
+    YN -> SF
+    YN -> JQ
+    ML -> RI
+    ML -> GG
+    UJ -> YA
+    UJ -> NS
+    IX -> AN
+    IX -> JQ
+    JC -> JQ
+    JC -> NJ
+    TA -> KV
+    TA -> VH
+    DT -> UU
+    DT -> HU
+    DT -> KA
+    DT -> VH
+    NR -> HF
+    NR -> CN
+    YI -> QF
+    YI -> UH
+    AA -> AM
+    AA -> AN
+    AA -> BN
+    AA -> LA
+    AA -> RJ
+    BN -> AA
+    BN -> YH
+    KA -> GG
+    KA -> DT
+    IL -> GG
+    IL -> XD
+    CN -> YH
+    CN -> EO
+    CN -> WX
+    CN -> NR
+    CN -> OM
+    IP -> WX
+    IP -> VT
+    OM -> CN
+    OM -> JQ
+    KO -> GQ
+    KO -> HR
+    LA -> AA
+    LA -> MU
+    JQ -> IX
+    JQ -> JC
+    JQ -> PX
+    JQ -> YN
+    JQ -> OM
+    IK -> EO
+    IK -> RP
+    HG -> MH
+    HG -> RP
+    NS -> CV
+    NS -> BB
+    NS -> UJ
+}

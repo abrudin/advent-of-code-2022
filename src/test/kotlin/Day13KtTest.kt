@@ -9,7 +9,7 @@ internal class Day13KtTest {
         assertThat(exampleB).isEqualTo(140)
 
         val (realA, realB) = day13(AocUtils.loadResourceAsString("day13.txt"))
-        assertThat(realA).isEqualTo(5196) // Too low, 5215 too high
+        assertThat(realA).isEqualTo(5196)
         assertThat(realB).isEqualTo(22134)
     }
 }
