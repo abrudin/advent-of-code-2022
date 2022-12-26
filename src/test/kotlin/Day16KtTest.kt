@@ -6,10 +6,10 @@ internal class Day16KtTest {
     fun test() {
         val (exampleA, exampleB) = day16(AocUtils.loadResourceAsString("day16-example.txt"))
         assertThat(exampleA).isEqualTo(1651)
-        assertThat(exampleB).isEqualTo(0) // 1447 too low
+        assertThat(exampleB).isEqualTo(1707)
 
         val (realA, realB) = day16(AocUtils.loadResourceAsString("day16.txt"))
-        assertThat(realA).isEqualTo(0)
-        assertThat(realB).isEqualTo(0)
+        assertThat(realA).isEqualTo(1653)
+        assertThat(realB).isEqualTo(2223)
     }
 }
