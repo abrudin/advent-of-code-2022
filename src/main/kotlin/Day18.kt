@@ -1,5 +1,14 @@
 fun day18(input: String): Pair<Int, Int> {
-    val parsed = input.split("\n").map { it.split(",").map { it.toInt() } }
+    val pixels = input.split("\n").map { it.split(",").map { it.toInt() } }
+    val cavities =
+        (0..(pixels.maxOf { it[0] } + 1)).flatMap { x ->
+            (0..(pixels.maxOf { it[1] } + 1)).flatMap { y ->
+                (0..(pixels.maxOf { it[2] } + 1)).map { z ->
+                    listOf(x, y, z)
+                }
+            }
+        }.filter { !pixels.contains(it) }
+
     fun neighbors(it: List<Int>): Set<List<Int>> = setOf(
         listOf(it[0] - 1, it[1], it[2]),
         listOf(it[0] + 1, it[1], it[2]),
@@ -9,21 +18,14 @@ fun day18(input: String): Pair<Int, Int> {
         listOf(it[0], it[1], it[2] + 1)
     )
 
-    val cavities =
-        (0..(parsed.maxOf { it[0] } + 1)).flatMap { x ->
-            (0..(parsed.maxOf { it[1] } + 1)).flatMap { y ->
-                (0..(parsed.maxOf { it[2] } + 1)).map {
-                    listOf(x, y, it)
-                }
-            }
-        }.filter { !parsed.contains(it) }
-
     tailrec fun innerClusters(
         allPixels: List<List<Int>>,
         currentIndex: Int = 0,
         allClusters: Set<Set<List<Int>>> = setOf()
     ): List<Set<List<Int>>> {
-        return if (currentIndex == allPixels.size) allClusters.filter { it.none { it[0] == 0 || it[1] == 0 || it[2] == 0 } } else {
+        return if (currentIndex == allPixels.size)
+            allClusters.filter { it.none { it[0] == 0 || it[1] == 0 || it[2] == 0 } }
+        else {
             val current = allPixels[currentIndex]
             val neighbors = neighbors(current).filter { cavities.contains(it) }
             val (withoutNeighbors, withNeighbors) = allClusters
@@ -36,7 +38,7 @@ fun day18(input: String): Pair<Int, Int> {
         }
     }
 
-    fun faces(pixels: Collection<List<Int>>): Int = pixels.sumOf { 6 - neighbors(it).count { pixels.contains(it) } }
+    fun faces(volumes: Collection<List<Int>>): Int = volumes.sumOf { 6 - neighbors(it).count { volumes.contains(it) } }
 
-    return Pair(faces(parsed), faces(parsed) - innerClusters(cavities).sumOf { innerCavity -> faces(innerCavity) })
+    return Pair(faces(pixels), faces(pixels) - innerClusters(cavities).sumOf { innerCavity -> faces(innerCavity) })
 }
