@@ -53,12 +53,12 @@ sealed interface Expr {
 }
 
 fun day21(input: String): Pair<Long, Long> {
-    fun calc(map: Map<String, String>, current: String = "root"): Expr =
+    fun parse(map: Map<String, String>, current: String = "root"): Expr =
         if (map[current]!! == "x") Expr.X(true)
         else if (map[current]!!.toLongOrNull() != null) Expr.Const(map[current]!!.toLong())
         else listOf("+", "-", "*", "/", "=").find { map[current]!!.contains(it) }!!.let {
             val (first, second) = map[current]!!.split(it).map { it.trim() }
-            Expr(calc(map, first), Op.from(it), calc(map, second))
+            Expr(parse(map, first), Op.from(it), parse(map, second))
         }
 
     val aMap = input.split("\n").associate { Pair(it.split(":")[0], it.split(":")[1].trim()) }
@@ -67,7 +67,7 @@ fun day21(input: String): Pair<Long, Long> {
             Pair("root", aMap["root"]!!.replace("+", "=").replace("-", "=").replace("*", "=").replace("/", "="))
 
     return Pair(
-        (calc(aMap) as Expr.Const).value,
-        (calc(bMap) as Expr.Const).value
+        (parse(aMap) as Expr.Const).value,
+        (parse(bMap) as Expr.Const).value
     )
 }

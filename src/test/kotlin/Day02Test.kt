@@ -1,7 +1,7 @@
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-internal class Day2KtTest {
+internal class Day02Test {
     @Test
     fun test() {
         val (exampleA, exampleB) = day2(AocUtils.loadResourceAsString("day2-example.txt"))
